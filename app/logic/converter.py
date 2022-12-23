@@ -506,6 +506,6 @@ ENV GOOGLE_APPLICATION_CREDENTIALS="/etc/krakend/config/credentials.json"
         shutil.copy("app/config/plugins/cloud-run-service-account.so", f"{self.output_folder_path}/config/plugins")
         logging.debug("Copied cloud-run-service-account.so")
 
-        logging.debug("Copying credentials.json")
-        shutil.copy("app/config/credentials.json", f"{self.output_folder_path}/config")
-        logging.debug("Copied credentials.json")
+        # logging.debug("Copying credentials.json")
+        # shutil.copy("app/config/credentials.json", f"{self.output_folder_path}/config")
+        # logging.debug("Copied credentials.json")
