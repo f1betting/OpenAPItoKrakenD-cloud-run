@@ -6,18 +6,18 @@
   <p align="center">
     A tool to batch-convert OpenAPI 3.0 files to a flexible KrakenD configuration
     <br />
-    <a href="https://github.com/niek-o/OpenAPItoKrakenD/issues">Report Bug</a>
+    <a href="https://github.com/niek-o/OpenAPItoKrakenD-cloud-run/issues">Report Bug</a>
     ·
-    <a href="https://github.com/OpenAPItoKrakenD/issues">Request Feature</a>
+    <a href="https://github.com/OpenAPItoKrakenD-cloud-run/issues">Request Feature</a>
     <br />
     <br />
-    <img alt="GitHub Latest Version" src="https://img.shields.io/github/v/release/f1betting/OpenAPItoKrakenD?label=Latest%20release&style=flat">
+    <img alt="GitHub Latest Version" src="https://img.shields.io/github/v/release/f1betting/OpenAPItoKrakenD-cloud-run?label=Latest%20release&style=flat">
     <br />
-    <img alt="SonarCloud coverage" src="https://sonarcloud.io/api/project_badges/measure?project=f1betting_OpenAPItoKrakenD&metric=coverage">
-    <img alt="SonarCloud quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=f1betting_OpenAPItoKrakenD&metric=alert_status">
-    <img alt="SonarCloud code smells" src="https://sonarcloud.io/api/project_badges/measure?project=f1betting_OpenAPItoKrakenD&metric=code_smells">
+    <img alt="SonarCloud coverage" src="https://sonarcloud.io/api/project_badges/measure?project=f1betting_OpenAPItoKrakenD-cloud-run&metric=coverage">
+    <img alt="SonarCloud quality gate" src="https://sonarcloud.io/api/project_badges/measure?project=f1betting_OpenAPItoKrakenD-cloud-run&metric=alert_status">
+    <img alt="SonarCloud code smells" src="https://sonarcloud.io/api/project_badges/measure?project=f1betting_OpenAPItoKrakenD-cloud-run&metric=code_smells">
     <br />
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/f1betting/OpenAPItoKrakenD/python_on_push_master.yml?label=Build&branch=main">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/f1betting/OpenAPItoKrakenD-cloud-run/python_on_push_master.yml?label=Build&branch=main">
   </p>
 </div>
 
@@ -46,7 +46,7 @@
 
 ## ℹ️ About The Project
 
-A tool to batch-convert OpenAPI 3.0 files to a flexible KrakenD configuration
+A fork of [OpenAPItoKrakenD](https://github.com/f1betting/OpenAPItoKrakenD) which works with the krakend-cloud-run-service-account plugin
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -154,7 +154,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Convert specs to KrakenD config
-        uses: f1betting/OpenAPItoKrakenD@v1
+        uses: f1betting/OpenAPItoKrakenD-cloud-run@v1
         with:
           input-folder: specs
           name: "krakend_test_gateway"
