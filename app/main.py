@@ -23,7 +23,8 @@ def main(input_folder: str = typer.Argument(..., help="Input folder that contain
                                                                           "filename based-versioning instead. (If "
                                                                           "disabled and no filename versioning is "
                                                                           "done, the API will not get a version in "
-                                                                          "the endpoint)")):
+                                                                          "the endpoint)"),
+         dev: Optional[bool] = typer.Option(False, "--dev", help="Use application credentials JSON file")):
     """
     The converter CLI command
     """
@@ -32,7 +33,8 @@ def main(input_folder: str = typer.Argument(..., help="Input folder that contain
                                  output_folder_path=output_folder,
                                  name=name,
                                  stackdriver_project_id=stackdriver_project_id,
-                                 no_versioning=disable_automatic_versioning)
+                                 no_versioning=disable_automatic_versioning,
+                                 dev=dev)
     converter.convert()
 
 

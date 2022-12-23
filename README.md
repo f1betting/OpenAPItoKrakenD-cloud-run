@@ -81,7 +81,7 @@ $ python -m app.main --help
 
 Usage: python -m app.main [OPTIONS] INPUT_FOLDER OUTPUT_FOLDER
 
-The converter CLI command
+ The converter CLI command
 
 ╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
 │ *    input_folder       TEXT  Input folder that contains all the OpenAPI specifications [required]                                                                                                                                                                 │
@@ -92,9 +92,9 @@ The converter CLI command
 │ --stackdriver-project-id              TEXT  Google Cloud project id [default: None]                                                                                                                                                                                │
 │ --debug                                     Enable debug mode                                                                                                                                                                                                      │
 │ --disable-automatic-versioning              Disable versioning based on 'version' field in OpenAPI specification and use filename based-versioning instead. (If disabled and no filename versioning is done, the API will not get a version in the endpoint)       │
+│ --dev                                       Use application credentials JSON file                                                                                                                                                                                  │
 │ --help                                      Show this message and exit.                                                                                                                                                                                            │
 ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

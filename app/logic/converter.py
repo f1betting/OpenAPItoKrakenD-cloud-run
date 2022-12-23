@@ -15,7 +15,7 @@ class OpenAPIToKrakenD:
 
     # pylint: disable=too-many-arguments
     def __init__(self, logging_mode: int, input_folder_path: str, output_folder_path: str, name: str,
-                 stackdriver_project_id: str = None, no_versioning: bool = False):
+                 stackdriver_project_id: str = None, no_versioning: bool = False, dev: bool = False):
         """
         Initialize converter
         """
@@ -31,6 +31,8 @@ class OpenAPIToKrakenD:
         self.name: str = name
 
         self.versioning: bool = not no_versioning
+
+        self.dev: bool = dev
 
     def convert(self) -> OpenAPIToKrakenD:
         """
@@ -196,6 +198,9 @@ ENTRYPOINT FC_ENABLE=1 \\
     FC_TEMPLATES="/etc/krakend/config/templates" \\
     krakend run -c "/etc/krakend/config/krakend.json"
 """
+
+        if self.dev:
+            data = data + '\n\nENV GOOGLE_APPLICATION_CREDENTIALS="/etc/krakend/config/credentials.json"'
 
         with open(f"{self.output_folder_path}/Dockerfile", "w+", encoding="utf-8") as dockerfile:
             dockerfile.write(data)
@@ -504,6 +509,7 @@ ENTRYPOINT FC_ENABLE=1 \\
         shutil.copy("app/config/plugins/cloud-run-service-account.so", f"{self.output_folder_path}/config/plugins")
         logging.debug("Copied cloud-run-service-account.so")
 
-        # logging.debug("Copying credentials.json")
-        # shutil.copy("app/config/credentials.json", f"{self.output_folder_path}/config")
-        # logging.debug("Copied credentials.json")
+        if self.dev:
+            logging.debug("Copying credentials.json")
+            shutil.copy("app/config/credentials.json", f"{self.output_folder_path}/config")
+            logging.debug("Copied credentials.json")

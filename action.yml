@@ -3,9 +3,6 @@ name: Run Server
 description: Run the mockserver for F1Betting
 
 inputs:
-  credentials:
-    required: true
-    description: The service account credentials in JSON format
   input-folder:
     required: true
     description: The input folder that contains the OpenAPI specs
@@ -47,11 +44,6 @@ runs:
         mkdir -p app/config
         mkdir -p app/config/plugins
         cp ./cloud-run-service-account.so app/config/plugins/
-
-    - name: Copy plugin to correct directory
-      shell: bash
-      run: |
-        echo "${{inputs.credentials}}" > app/config/credentials.json
 
     - name: Convert OpenAPI spec to KrakenD
       shell: bash
