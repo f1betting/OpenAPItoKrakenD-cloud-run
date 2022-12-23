@@ -22,7 +22,10 @@ jobs:
           tag: "70e6502"
           fileName: "cloud-run-service-account.so"
 
-      - run: cp ./cloud-run-service-account.so ./app/config/plugins/
+      - run: |
+          mkdir -p app/config
+          mkdir -p app/config/plugins
+          cp ./cloud-run-service-account.so app/config/plugins/
 
       # testing
       - name: Test with pytest
