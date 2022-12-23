@@ -15,6 +15,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r ./requirements.txt
+
+      - uses: robinraju/release-downloader@v1.7
+        with:
+          repository: "f1betting/krakend-cloud-run-service-account"
+          tag: "70e6502"
+          fileName: "cloud-run-service-account.so"
+
+      - run: cp ./cloud-run-service-account.so ./app/config/plugins/
+
       # testing
       - name: Test with pytest
         run: coverage run --source=app --branch -m unittest discover -v
