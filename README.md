@@ -152,13 +152,14 @@ on: workflow_dispatch
 jobs:
   convert:
     runs-on: ubuntu-latest
+
     steps:
       - name: Convert specs to KrakenD config
-        uses: f1betting/OpenAPItoKrakenD-cloud-run@v1
+        uses: f1betting/OpenAPItoKrakenD-cloud-run@v1.0.1
         with:
           input-folder: specs
           name: "krakend_test_gateway"
-          stackdriver-project-id: google-project-id
+          stackdriver-project-id: ${{secrets.GOOGLE_PROJECT_ID}}
 ````
 
 #### 📝 Configuration

@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Convert specs to KrakenD config
-        uses: f1betting/OpenAPItoKrakenD@v1
+        uses: f1betting/OpenAPItoKrakenD-cloud-run@v1.0.1
         with:
           input-folder: specs
           name: "krakend_test_gateway"
