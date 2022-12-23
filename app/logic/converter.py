@@ -195,8 +195,6 @@ ENTRYPOINT FC_ENABLE=1 \\
     FC_SETTINGS="/etc/krakend/config/settings"\\
     FC_TEMPLATES="/etc/krakend/config/templates" \\
     krakend run -c "/etc/krakend/config/krakend.json"
-
-ENV GOOGLE_APPLICATION_CREDENTIALS="/etc/krakend/config/credentials.json"
 """
 
         with open(f"{self.output_folder_path}/Dockerfile", "w+", encoding="utf-8") as dockerfile:
