@@ -4,7 +4,8 @@
 <h3 align="center">OpenAPItoKrakenD-cloud-run</h3>
 
   <p align="center">
-    A fork of OpenAPItoKrakenD which works with the krakend-cloud-run-service-account plugin
+    A fork of <a href="https://github.com/f1betting/OpenAPItoKrakenD">OpenAPItoKrakenD</a> which works with the
+    <a href="https://github.com/f1betting/krakend-cloud-run-service-account">krakend-cloud-run-service-account</a> plugin
     <br />
     <a href="https://github.com/niek-o/OpenAPItoKrakenD-cloud-run/issues">Report Bug</a>
     ·
@@ -47,7 +48,7 @@
 ## ℹ️ About The Project
 
 A fork of [OpenAPItoKrakenD](https://github.com/f1betting/OpenAPItoKrakenD) which works with the
-krakend-cloud-run-service-account plugin
+[krakend-cloud-run-service-account](https://github.com/f1betting/krakend-cloud-run-service-account) plugin
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
