@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import re
+import shutil
 
 
 class OpenAPIToKrakenD:
@@ -76,6 +77,10 @@ class OpenAPIToKrakenD:
         self.__write_dockerfile()
         logging.info("Finished writing Dockerfile")
 
+        logging.info("Copying required files")
+        self.__copy_required_files()
+        logging.info("Copied required files")
+
         return self
 
     @staticmethod
@@ -101,7 +106,14 @@ class OpenAPIToKrakenD:
                     "host": [
                         "{{ $host }}"
                     ],
-                    "disable_host_sanitize": False
+                    "disable_host_sanitize": False,
+                    "extra_config": {
+                        "plugin/req-resp-modifier": {
+                            "name": [
+                                "cloud-run-service-account"
+                            ]
+                        }
+                    }
                 }
             ],
             "input_headers": headers
@@ -171,7 +183,7 @@ class OpenAPIToKrakenD:
         """
         Write the dockerfile
         """
-        data = """FROM devopsfaith/krakend:2.1.2
+        data = f"""FROM devopsfaith/krakend:2.1.3
 
 COPY /config /etc/krakend/config
 
@@ -183,6 +195,8 @@ ENTRYPOINT FC_ENABLE=1 \\
     FC_SETTINGS="/etc/krakend/config/settings"\\
     FC_TEMPLATES="/etc/krakend/config/templates" \\
     krakend run -c "/etc/krakend/config/krakend.json"
+
+ENV GOOGLE_APPLICATION_CREDENTIALS="/etc/krakend/config/credentials.json"
 """
 
         with open(f"{self.output_folder_path}/Dockerfile", "w+", encoding="utf-8") as dockerfile:
@@ -301,6 +315,10 @@ ENTRYPOINT FC_ENABLE=1 \\
                     "stdout": True,
                     "format": "logstash"
                 }
+            },
+            "plugin": {
+                "pattern": ".so",
+                "folder": "/etc/krakend/config/plugins/"
             },
             "endpoints": '[{{template "Endpoints".service}}]'
         }
@@ -477,8 +495,17 @@ ENTRYPOINT FC_ENABLE=1 \\
         """
         Create the configuration folders
         """
-        paths = ["config", "config/settings", "config/templates"]
+        paths = ["config", "config/settings", "config/templates", "config/plugins"]
 
         for folder in paths:
             if not os.path.exists(os.path.join(self.output_folder_path, folder)):
                 os.mkdir(os.path.join(self.output_folder_path, folder))
+
+    def __copy_required_files(self):
+        logging.debug("Copying cloud-run-service-account.so")
+        shutil.copy("app/config/plugins/cloud-run-service-account.so", f"{self.output_folder_path}/config/plugins")
+        logging.debug("Copied cloud-run-service-account.so")
+
+        logging.debug("Copying credentials.json")
+        shutil.copy("app/config/credentials.json", f"{self.output_folder_path}/config")
+        logging.debug("Copied credentials.json")
