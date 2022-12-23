@@ -35,7 +35,7 @@ runs:
       uses: robinraju/release-downloader@v1.7
       with:
         repository: "f1betting/krakend-cloud-run-service-account"
-        tag: "70e6502"
+        latest: true
         fileName: "cloud-run-service-account.so"
 
     - name: Copy plugin to correct directory
