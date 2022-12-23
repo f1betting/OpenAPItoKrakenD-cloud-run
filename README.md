@@ -1,10 +1,10 @@
 <a name="readme-top"></a>
 
 <div>
-<h3 align="center">OpenAPItoKrakenD</h3>
+<h3 align="center">OpenAPItoKrakenD-cloud-run</h3>
 
   <p align="center">
-    A tool to batch-convert OpenAPI 3.0 files to a flexible KrakenD configuration
+    A fork of OpenAPItoKrakenD which works with the krakend-cloud-run-service-account plugin
     <br />
     <a href="https://github.com/niek-o/OpenAPItoKrakenD-cloud-run/issues">Report Bug</a>
     ·
@@ -46,7 +46,8 @@
 
 ## ℹ️ About The Project
 
-A fork of [OpenAPItoKrakenD](https://github.com/f1betting/OpenAPItoKrakenD) which works with the krakend-cloud-run-service-account plugin
+A fork of [OpenAPItoKrakenD](https://github.com/f1betting/OpenAPItoKrakenD) which works with the
+krakend-cloud-run-service-account plugin
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -96,6 +97,10 @@ Usage: python -m app.main [OPTIONS] INPUT_FOLDER OUTPUT_FOLDER
 │ --help                                      Show this message and exit.                                                                                                                                                                                            │
 ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
+
+_Note that the ``--dev`` flag is for development purposes only and should **NEVER** be used in production. It copies the
+plugin from `/app/config/plugins/krakend-cloud-run-service-account.so` and grabs the credentials.json
+from `/app/config/credentials.json`, so you can run the gateway locally._
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

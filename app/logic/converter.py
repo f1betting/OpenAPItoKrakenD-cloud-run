@@ -185,7 +185,7 @@ class OpenAPIToKrakenD:
         """
         Write the dockerfile
         """
-        data = f"""FROM devopsfaith/krakend:2.1.3
+        data = """FROM devopsfaith/krakend:2.1.3
 
 COPY /config /etc/krakend/config
 
