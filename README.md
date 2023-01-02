@@ -1,3 +1,10 @@
+# ⚠️Deprecation warning
+
+This repository has been deprecated due to the custom configuration support added
+to [OpenAPItoKrakenD](https://github.com/f1betting/OpenAPItoKrakenD).
+See [KrakenD Cloud Run service account](https://github.com/f1betting/OpenAPItoKrakenD/tree/main/examples/krakend-cloud-run-service-account-plugin)
+for a detailed example on how to use the custom configurations.
+
 <a name="readme-top"></a>
 
 <div>
@@ -46,7 +53,8 @@
 
 ## ℹ️ About The Project
 
-A fork of [OpenAPItoKrakenD](https://github.com/f1betting/OpenAPItoKrakenD) which works with the krakend-cloud-run-service-account plugin
+A fork of [OpenAPItoKrakenD](https://github.com/f1betting/OpenAPItoKrakenD) which works with the
+krakend-cloud-run-service-account plugin
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
